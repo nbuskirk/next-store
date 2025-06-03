@@ -14,6 +14,7 @@ export default function LoginPage() {
     try {
       const response = await loginMutation.mutateAsync({ email, password });
       if (response.success) {
+        localStorage.setItem('user', email);
         window.location.href = '/';
       } else {
         setMessage(response.message);
