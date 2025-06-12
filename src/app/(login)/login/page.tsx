@@ -2,12 +2,14 @@
 
 import { useState } from 'react';
 import { useLogin } from '@/hooks/useLogin';
+import { useRouter } from 'next/navigation';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const loginMutation = useLogin();
   const [message, setMessage] = useState('');
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -15,7 +17,7 @@ export default function LoginPage() {
       const response = await loginMutation.mutateAsync({ email, password });
       if (response.success) {
         localStorage.setItem('user', email);
-        window.location.href = '/';
+        router.push('/store');
       } else {
         setMessage(response.message);
       }
