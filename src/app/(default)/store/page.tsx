@@ -3,8 +3,8 @@ import ProductCard from '@/components/ProductCard';
 
 export default function StorePage() {
   return (
-    <div className='flex grid flex-col gap-5 bg-neutral-200 p-15 text-neutral-800 sm:grid-cols-1 md:grid-cols-3'>
-      <ProductCard id='1' name='Sample Product' price={29.99} />
+    <div className='flex grid min-h-screen flex-col gap-5 bg-neutral-200 p-15 text-neutral-800 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
+      <ProductCard id='1' name='Pixel Quest' price={29.99} />
       <ProductCard id='2' name='Sample Product 2' price={19.99} />
       <ProductCard id='3' name='Sample Product 3' price={9.99} />
       <ProductCard id='4' name='Sample Product 4' price={29.99} />

@@ -24,9 +24,9 @@ const Navbar = () => {
         <Link
           href='/store'
           className={clsx(
-            'mx-5 border-b-2 border-neutral-50 py-7 text-gray-800 hover:border-b-2 hover:border-gray-800',
+            'mx-5 border-b-2 border-neutral-50 py-7 text-neutral-950 transition-all duration-500 hover:border-b-2 hover:border-neutral-950',
             {
-              'border-zinc-800': pathname === '/store',
+              'border-neutral-950': pathname === '/store',
             }
           )}
         >
@@ -62,7 +62,7 @@ const Navbar = () => {
         <Link href='/cart' className='px-5'>
           <span className='inline-flex items-center text-sm text-gray-600'>
             <ShoppingCart className='text-gray-800' />
-            <span className='ml-1 text-gray-800'>
+            <span className='position-absolute right-0 ml-1 text-gray-800'>
               {cartItems.length > 0 ? cartItems.length : ''}
             </span>
           </span>
