@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { logout } from '@/actions/logout';
 import clsx from 'clsx';
 import { usePathname } from 'next/navigation';
+import { useCartStore } from '@/store/cartStore';
 
 const rubik = Rubik({
   subsets: ['latin'],
@@ -13,6 +14,8 @@ const rubik = Rubik({
 
 const Navbar = () => {
   const pathname = usePathname();
+  const cartItems = useCartStore((state) => state.items);
+
   return (
     <nav
       className={`${rubik.className} sticky top-0 mx-auto flex justify-between border-b-1 border-solid border-gray-300 bg-neutral-50 text-[15px] font-medium tracking-[3px] uppercase`}
@@ -57,7 +60,12 @@ const Navbar = () => {
           <UserRound className='text-gray-800' />
         </Link>
         <Link href='/cart' className='px-5'>
-          <ShoppingCart className='text-gray-800' />
+          <span className='inline-flex items-center text-sm text-gray-600'>
+            <ShoppingCart className='text-gray-800' />
+            <span className='ml-1 text-gray-800'>
+              {cartItems.length > 0 ? cartItems.length : ''}
+            </span>
+          </span>
         </Link>
         <Link href='/login' onClick={logout} className='px-5'>
           <LogOut className='text-gray-800' />
