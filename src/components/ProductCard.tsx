@@ -1,7 +1,6 @@
 'use client';
 
 import { useCartStore } from '@/store/cartStore';
-import { Plus } from 'lucide-react';
 
 const ProductCard = ({
   id,
