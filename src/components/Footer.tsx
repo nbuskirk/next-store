@@ -1,30 +1,41 @@
-const Footer = () => (
-  <footer className='bg-gray-800 bg-neutral-50 py-4 text-gray-800'>
-    <div className='container mx-auto text-center'>
+import { Titillium_Web } from 'next/font/google';
+
+const titillium = Titillium_Web({
+  subsets: ['latin'],
+  weight: ['400', '600', '700'],
+});
+
+const Footer = () => {
+  return (
+    <footer className='bg-gray-800 bg-neutral-50 p-15 text-gray-800'>
+      <h2 className='mb-[20px] text-sm text-[15px] font-medium tracking-[3px] uppercase'>
+        Support
+      </h2>
       <ul>
-        <li className='mx-2 inline'>
-          <a
-            href='/privacy-policy'
-            className='text-gray-400 hover:text-gray-200'
+        <li>
+          <p
+            className={`text-sm ${titillium.className} mb-[12px] text-[17px] text-neutral-500 transition-colors duration-500 hover:text-neutral-950`}
           >
-            Store
-          </a>
+            Shipping
+          </p>
         </li>
-        <li className='mx-2 inline'>
-          <a
-            href='/terms-of-service'
-            className='text-gray-400 hover:text-gray-200'
+        <li>
+          <p
+            className={`text-sm ${titillium.className} mb-[12px] text-[17px] text-zinc-500`}
           >
-            News
-          </a>
+            Return Policy
+          </p>
         </li>
-        <li className='mx-2 inline'>
-          <a href='/contact' className='text-gray-400 hover:text-gray-200'>
-            Status
-          </a>
+        <li>
+          <p
+            className={`text-sm ${titillium.className} mb-[12px] text-[17px] text-zinc-500`}
+          >
+            Warranty
+          </p>
         </li>
       </ul>
-    </div>
-  </footer>
-);
+    </footer>
+  );
+};
+
 export default Footer;
