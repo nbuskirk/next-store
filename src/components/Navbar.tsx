@@ -1,5 +1,4 @@
 'use client';
-import { Rubik } from 'next/font/google';
 import { LogOut, ShoppingCart, UserRound } from 'lucide-react';
 import Link from 'next/link';
 import { logout } from '@/actions/logout';
@@ -7,18 +6,13 @@ import clsx from 'clsx';
 import { usePathname } from 'next/navigation';
 import { useCartStore } from '@/store/cartStore';
 
-const rubik = Rubik({
-  subsets: ['latin'],
-  weight: ['400', '500', '700'],
-});
-
 const Navbar = () => {
   const pathname = usePathname();
   const cartItems = useCartStore((state) => state.items);
 
   return (
     <nav
-      className={`${rubik.className} sticky top-0 mx-auto flex justify-between border-b-1 border-solid border-gray-300 bg-neutral-50 text-[15px] font-medium tracking-[3px] uppercase`}
+      className={`sticky top-0 mx-auto flex justify-between bg-neutral-50 text-[15px] font-medium tracking-[3px] uppercase`}
     >
       <div className='container mx-auto flex items-center px-10'>
         <Link
