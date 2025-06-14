@@ -1,8 +1,7 @@
 'use client';
-import { LogOut, ShoppingCart, UserRound, Menu } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import Link from 'next/link';
 import { logout } from '@/actions/logout';
-import clsx from 'clsx';
 import { usePathname } from 'next/navigation';
 import { useCartStore } from '@/store/cartStore';
 import styles from './navbar.module.css';
@@ -17,15 +16,15 @@ const primaryMenuLinks: MenuLink[] = [
   { name: 'Store', href: '/store' },
 ];
 
-const secondaryMenuLinks: MenuLink[] = [
-  { name: 'Account', href: '/account' },
-  { name: 'Cart', href: '/cart' },
-  { name: 'Logout', href: '/login', action: logout },
-];
+// const secondaryMenuLinks: MenuLink[] = [
+//   { name: 'Account', href: '/account' },
+//   { name: 'Cart', href: '/cart' },
+//   { name: 'Logout', href: '/login', action: logout },
+// ];
 
 const Navbar = () => {
-  const pathname = usePathname();
-  const cartItems = useCartStore((state) => state.items);
+  // const pathname = usePathname();
+  // const cartItems = useCartStore((state) => state.items);
 
   return (
     <nav className='sticky top-0 flex justify-between bg-white'>
