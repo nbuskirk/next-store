@@ -1,70 +1,68 @@
 'use client';
-import { LogOut, ShoppingCart, UserRound } from 'lucide-react';
+import { LogOut, ShoppingCart, UserRound, Menu } from 'lucide-react';
 import Link from 'next/link';
 import { logout } from '@/actions/logout';
 import clsx from 'clsx';
 import { usePathname } from 'next/navigation';
 import { useCartStore } from '@/store/cartStore';
+import styles from './navbar.module.css';
+
+interface MenuLink {
+  name: string;
+  href: string;
+  action?: () => void;
+}
+const primaryMenuLinks: MenuLink[] = [
+  { name: 'Home', href: '/' },
+  { name: 'Store', href: '/store' },
+];
+
+const secondaryMenuLinks: MenuLink[] = [
+  { name: 'Account', href: '/account' },
+  { name: 'Cart', href: '/cart' },
+  { name: 'Logout', href: '/login', action: logout },
+];
 
 const Navbar = () => {
   const pathname = usePathname();
   const cartItems = useCartStore((state) => state.items);
 
   return (
-    <nav
-      className={`sticky top-0 mx-auto flex justify-between bg-neutral-50 text-[15px] font-medium tracking-[3px] uppercase`}
-    >
-      <div className='container mx-auto flex items-center px-10'>
-        <Link
-          href='/store'
-          className={clsx(
-            'mx-5 border-b-2 border-neutral-50 py-7 text-neutral-950 transition-all duration-500 hover:border-b-2 hover:border-neutral-950',
-            {
-              'border-neutral-950': pathname === '/store',
-            }
-          )}
-        >
-          Store
-        </Link>
-        {/* <Link
-          href='/news'
-          className={clsx(
-            'mx-5 border-b-2 border-neutral-50 py-7 text-gray-800 hover:border-b-2 hover:border-gray-800',
-            {
-              'border-zinc-800': pathname === '/news',
-            }
-          )}
-        >
-          News
-        </Link>
-        <Link
-          href='/status'
-          className={clsx(
-            'mx-5 border-b-2 border-neutral-50 py-7 text-gray-800 hover:border-b-2 hover:border-gray-800',
-            {
-              'border-zinc-800': pathname === '/status',
-            }
-          )}
-        >
-          Status
-        </Link> */}
-      </div>
-      <div className='flex items-center px-10'>
-        <Link href='/account' className='px-5'>
-          <UserRound className='text-gray-800' />
-        </Link>
-        <Link href='/cart' className='px-5'>
-          <span className='inline-flex items-center text-sm text-gray-600'>
-            <ShoppingCart className='text-gray-800' />
-            <span className='position-absolute right-0 ml-1 text-gray-800'>
-              {cartItems.length > 0 ? cartItems.length : ''}
-            </span>
-          </span>
-        </Link>
-        <Link href='/login' onClick={logout} className='px-5'>
-          <LogOut className='text-gray-800' />
-        </Link>
-      </div>
+    <nav className='sticky top-0 flex justify-between bg-white'>
+      <ul className='flex w-full flex-col px-15 sm:flex-row sm:items-center sm:space-x-8'>
+        <Menu className='hidden text-neutral-800 sm:block' strokeWidth={2} />
+        {primaryMenuLinks.map((link) => (
+          <li key={link.name}>
+            <Link
+              href={link.href}
+              className={`relative flex py-6 text-sm font-medium tracking-[3px] text-neutral-800 uppercase ${styles.navLink}`}
+            >
+              {link.name}
+            </Link>
+          </li>
+        ))}
+      </ul>
+      {/* <ul className='flex items-center space-x-8 px-15'>
+        {secondaryMenuLinks.map((link) => (
+          <li key={link.name}>
+            <Link
+              href={link.href}
+              onClick={link.action}
+              className='flex py-6 text-neutral-800'
+            >
+              {link.name === 'Cart' && cartItems.length > 0 ? (
+                <>
+                  <ShoppingCart />
+                </>
+              ) : link.name === 'Logout' ? (
+                <LogOut />
+              ) : (
+                <UserRound />
+              )}
+            </Link>
+          </li>
+        ))}
+      </ul> */}
     </nav>
   );
 };
