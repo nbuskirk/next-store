@@ -1,0 +1,14 @@
+.navLink::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0; /* Adjust for top border */
+  width: 0;
+  height: 2px; /* Border thickness */
+  background-color: var(--color-neutral-800); /* Border color */
+}
+
+.navLink:hover::before { /* Trigger on hover */
+  width: 100%; /* Full width */
+  transition: width 0.3s ease-in-out; /* Animation duration and easing */
+}
