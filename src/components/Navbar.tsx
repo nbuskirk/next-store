@@ -1,9 +1,9 @@
 'use client';
-import { Menu } from 'lucide-react';
+import { Gamepad } from 'lucide-react';
 import Link from 'next/link';
-import { logout } from '@/actions/logout';
-import { usePathname } from 'next/navigation';
-import { useCartStore } from '@/store/cartStore';
+// import { logout } from '@/actions/logout';
+// import { usePathname } from 'next/navigation';
+// import { useCartStore } from '@/store/cartStore';
 import styles from './navbar.module.css';
 
 interface MenuLink {
@@ -29,7 +29,7 @@ const Navbar = () => {
   return (
     <nav className='sticky top-0 flex justify-between bg-white'>
       <ul className='flex w-full flex-col px-15 sm:flex-row sm:items-center sm:space-x-8'>
-        <Menu className='hidden text-neutral-800 sm:block' strokeWidth={2} />
+        <Gamepad className='hidden text-neutral-800 sm:block' strokeWidth={2} />
         {primaryMenuLinks.map((link) => (
           <li key={link.name}>
             <Link
